@@ -1,23 +1,35 @@
-export default function QuizSignleAnswer() {
+import { useEffect, useState } from "react"
+
+export default function QuizSignleAnswer({ correctAnswer, question, variants }) {
+
+
+    const [userAnswer, setUserAnswer] = useState('')
+    const [result, setResult] = useState('')
+
+    useEffect(() => {
+        if (userAnswer == correctAnswer) {
+            setResult('Верно!')
+        } else {
+            setResult('Неверно!')
+        }
+    }, [userAnswer])
+
+
     return (
         <div>
-            <h3>Где я буду служить, когда меня отчислят?</h3>
+            <h3>{question}</h3>
 
             <div>
-                <label>
-                    <input type="radio" name="answer" />
-                    Рязань ВДВ
-                </label>
-                <label>
-                    <input type="radio" name="answer" />
-                    Стройбат
-                </label>
-                <label>
-                    <input type="radio" name="answer" />
-                    Под Ростовом
-                </label>
+                {
+                    variants.map(variant => (
+                        <label>
+                            <input type="radio" name="answer" onChange={() => setUserAnswer(variant)} />
+                            {variant}
+                        </label>
+                    ))
+                }
             </div>
-            <p></p>
+            <p>{result}</p>
         </div>
     )
 }
