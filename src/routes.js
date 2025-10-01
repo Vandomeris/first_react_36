@@ -3,6 +3,8 @@ import IndexPage from "./pages/IndexPage";
 import AdminPage from "./pages/AdminPage";
 import MainLayout from "./pages/MainLayout";
 import AboutPage from "./pages/AboutPage";
+import QuizesPage from "./pages/QuizesPage/QuizesPage";
+import CreateQuizPage from "./pages/CreateQuizPage";
 
 export const router = createBrowserRouter([
     {
@@ -19,6 +21,14 @@ export const router = createBrowserRouter([
             {
                 path: 'about',
                 Component: AboutPage
+            },
+            {
+                path: 'quizes',
+                Component: QuizesPage
+            },
+            {
+                path: 'quizes/create',
+                Component: CreateQuizPage
             }
         ]
     }
