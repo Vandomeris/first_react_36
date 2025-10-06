@@ -2,9 +2,9 @@ import { NavLink, Outlet } from "react-router";
 
 export default function MainLayout() {
     return (
-        <div>
+        <div className="container mx-auto ">
 
-            <header>
+            <header className="flex justify-end gap-x-5 py-5">
                 <NavLink to="/">Главная</NavLink>
                 <NavLink to="/admin">Админка</NavLink>
             </header>
@@ -13,9 +13,9 @@ export default function MainLayout() {
                 <Outlet />
             </main>
 
-            <footer>
+            {/* <footer>
                 2025. Все права защищены
-            </footer>
+            </footer> */}
 
         </div>
     )
