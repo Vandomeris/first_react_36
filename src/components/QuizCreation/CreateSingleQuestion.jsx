@@ -7,7 +7,7 @@ export default function CreateSingleQuestion({ question, editQuestion }) {
             </label>
             <div>
                 <p>Варианты ответа</p>
-                <div>
+                <div className="">
                     {
                         question.options.map((option, index) => (
                             <div className="flex gap-x-3">
@@ -18,7 +18,10 @@ export default function CreateSingleQuestion({ question, editQuestion }) {
                         ))
                     }
                 </div>
-                <button className="px-2 py-1 text-sm rounded-md border border-gray-500 text-gray-700">Добавить вариант ответа</button>
+                <button
+                    onClick={() => editQuestion(question.id, [...question.options, ''], 'options')}
+                    className="px-2 py-1 text-sm rounded-md border border-gray-500 text-gray-700"
+                >Добавить вариант ответа</button>
             </div>
 
         </div>
