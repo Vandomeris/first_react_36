@@ -5,6 +5,8 @@ import MainLayout from "./pages/MainLayout";
 import AboutPage from "./pages/AboutPage";
 import QuizesPage from "./pages/QuizesPage/QuizesPage";
 import CreateQuizPage from "./pages/CreateQuizPage";
+import UserCardPage from "./pages/UserCardPage";
+import ProductsPage from "./pages/ProductsPage";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +31,14 @@ export const router = createBrowserRouter([
             {
                 path: 'quizes/create',
                 Component: CreateQuizPage
+            },
+            {
+                path: 'users/:id',
+                Component: UserCardPage
+            },
+            {
+                path: 'products',
+                Component: ProductsPage
             }
         ]
     }
