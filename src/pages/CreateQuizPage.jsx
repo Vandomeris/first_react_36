@@ -2,6 +2,7 @@ import { useState } from "react"
 import CreateDirectQuestion from "../components/QuizCreation/CreateDirectQuestion"
 import CreateSingleQuestion from "../components/QuizCreation/CreateSingleQuestion"
 import CreateMultipleQuesiton from "../components/QuizCreation/CreateMultipleQuesiton"
+import { Button, Select } from "antd"
 
 export default function CreateQuizPage() {
 
@@ -45,11 +46,17 @@ export default function CreateQuizPage() {
                 {
                     quiz.map(question => (
                         <div>
-                            <select onChange={(e) => editQuestion(question.id, e.target.value, 'type')} className="bg-gray-300 px-2 py-1 rounded-xl mb-5">
-                                <option value="direct">Вопрос с прямым ответом</option>
-                                <option value="signle">Выбор из одного варианта</option>
-                                <option value="multiple">Выбор из множества вариантов</option>
-                            </select>
+                            <Select
+                                placeholder="Выберите тип вопроса"
+                                style={{ width: 240 }}
+                                onChange={(value) => editQuestion(question.id, value, 'type')}
+                                options={[
+                                    { value: 'direct', label: 'Вопрос с прямым ответом' },
+                                    { value: 'signle', label: 'Выбор из одного варианта' },
+                                    { value: 'multiple', label: 'Выбор из множества вариантов' },
+                                ]}
+                            />
+
                             {
                                 question.type === 'direct' && <CreateDirectQuestion question={question} editQuestion={editQuestion} />
                             }
@@ -66,8 +73,12 @@ export default function CreateQuizPage() {
 
 
                 <div className="flex gap-x-5 mt-5">
-                    <button onClick={() => addQuestion()} className="px-2 py-1 rounded-md bg-gray-500 text-white">Добавить вопрос</button>
-                    <button className="px-2 py-1 rounded-md bg-green-500 text-white">Сохранить квиз</button>
+                    <Button onClick={() => addQuestion()} color="cyan" variant="outlined">
+                        Добавить вопрос
+                    </Button>
+                    <Button color="purple" variant="solid">
+                        Сохранить квиз
+                    </Button>
                 </div>
             </div>
 

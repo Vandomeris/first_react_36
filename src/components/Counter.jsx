@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-export default function Counter() {
+export default function Counter({ quantity, changeQuantity, id }) {
 
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(quantity)
 
     function increment() {
         if (count < 10) {
@@ -16,6 +16,10 @@ export default function Counter() {
             setCount(count - 1)
         }
     }
+
+    useEffect(() => {
+        changeQuantity(id, count)
+    }, [count])
 
     return (
         <div>

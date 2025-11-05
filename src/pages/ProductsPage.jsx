@@ -1,8 +1,27 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { CartContext } from "../stores"
 
 export default function ProductsPage() {
 
     const [products, setProducts] = useState([])
+
+
+    const [cart, setCart] = useContext(CartContext)
+
+    console.log(cart)
+
+    function addToCart(product) {
+        setCart(
+            [
+                ...cart,
+                {
+                    ...product,
+                    quantity: 1
+                }
+            ]
+        )
+
+    }
 
     useEffect(() => {
         async function getData() {
@@ -18,6 +37,8 @@ export default function ProductsPage() {
         getData()
     }, [])
 
+
+
     return (
 
         <div className="grid grid-cols-4 gap-8">
@@ -25,13 +46,15 @@ export default function ProductsPage() {
 
             {
                 products.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        title={product.title}
-                        category={product.category.name}
-                        images={product.images}
-                        price={product.price}
-                    />
+                    <div>
+                        <img src={product.images[0]} alt="" />
+                        <h3>{product.title}</h3>
+                        <p>{product.price}$</p>
+                        <button
+                            className="px-2 py-1 bg-amber-600 text-white"
+                            onClick={() => addToCart(product)}
+                        >Купить</button>
+                    </div>
                 ))
             }
         </div>
