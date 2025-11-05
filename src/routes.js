@@ -8,6 +8,7 @@ import CreateQuizPage from "./pages/CreateQuizPage";
 import UserCardPage from "./pages/UserCardPage";
 import ProductsPage from "./pages/ProductsPage";
 import CartPage from "./pages/CartPage";
+import CreateUserPage from "./pages/CreateUserPage_FormData1";
 
 export const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
             {
                 path: 'cart',
                 Component: CartPage
+            },
+            {
+                path: 'user/create',
+                Component: CreateUserPage
             }
         ]
     }
